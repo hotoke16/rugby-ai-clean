@@ -24,7 +24,7 @@ async function sendQuestion() {
 
   // サーバーに送信
   try {
-    const res = await fetch("http://localhost:10000/ask", {
+    const res = await fetch("/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question })
