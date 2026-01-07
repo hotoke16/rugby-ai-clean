@@ -14,9 +14,22 @@ async function sendQuestion() {
 
   textarea.value = "";
 
-  // AIメッセージ枠を作成
+  // AIメッセージ枠を作成（ローディング状態）
   const aiMsg = document.createElement("div");
-  aiMsg.className = "message ai";
+  aiMsg.className = "message ai loading";
+  
+  // ローディングアニメーション用のドット
+  const dot1 = document.createElement("span");
+  dot1.className = "loading-dot";
+  const dot2 = document.createElement("span");
+  dot2.className = "loading-dot";
+  const dot3 = document.createElement("span");
+  dot3.className = "loading-dot";
+  
+  aiMsg.appendChild(dot1);
+  aiMsg.appendChild(dot2);
+  aiMsg.appendChild(dot3);
+  
   chat.appendChild(aiMsg);
 
   // 送信直後にスクロール
@@ -31,9 +44,15 @@ async function sendQuestion() {
     });
     const data = await res.json();
 
+    // ローディングクラスを削除して内容をクリア
+    aiMsg.classList.remove("loading");
+    aiMsg.textContent = "";
+
     // タイピングアニメーションで表示
     typeWriter(aiMsg, data.answer || data.error);
   } catch (err) {
+    aiMsg.classList.remove("loading");
+    aiMsg.textContent = "";
     typeWriter(aiMsg, "サーバーに接続できませんでした。");
   }
 }
