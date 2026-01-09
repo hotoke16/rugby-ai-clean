@@ -153,3 +153,46 @@ body {
 #sendBtn:hover {
   background: rgb(43.5283842795, 134.4716157205, 131.3624454148);
 }
+/* AIローディングアニメーション */
+.ai.loading::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin-left: 4px;
+  animation: dot-pulse 1.4s infinite;
+}
+
+.ai.loading::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin-left: 4px;
+  animation: dot-pulse 1.4s infinite 0.2s;
+}
+
+.loading-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin: 0 2px;
+  animation: dot-pulse 1.4s infinite 0.4s;
+}
+
+@keyframes dot-pulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
