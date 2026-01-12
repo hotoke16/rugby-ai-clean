@@ -85,9 +85,10 @@ function typeWriter(element, text, i = 0) {
       element.innerHTML += char;
     }
 
-    scrollToBottom(); // 文字が増えるごとにスクロール
-
     setTimeout(() => typeWriter(element, text, i + 1), 30);
+  } else {
+    // タイピング完了後に一度だけスクロール
+    scrollToBottom();
   }
 }
 
