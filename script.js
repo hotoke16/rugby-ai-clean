@@ -74,11 +74,12 @@ function scrollToBottom() {
 }
 
 // タイピング風に表示（改行対応あり）
+// AI処理中はスクロール位置を固定しない、完了時のみスクロール
 function typeWriter(element, text, i = 0) {
   if (i < text.length) {
     const char = text.charAt(i);
 
-    // 改行を <br> に変換
+    // 改行を <br> に変換（改行中もスクロール位置は動かさない）
     if (char === "\n") {
       element.innerHTML += "<br>";
     } else {
@@ -86,9 +87,6 @@ function typeWriter(element, text, i = 0) {
     }
 
     setTimeout(() => typeWriter(element, text, i + 1), 30);
-  } else {
-    // タイピング完了後に一度だけスクロール
-    scrollToBottom();
   }
 }
 
