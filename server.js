@@ -32,7 +32,9 @@ const knowledge = fs.readFileSync(path.join(__dirname, "knowledge.txt"), "utf-8"
 let messages = [
   {
     role: "system",
-    content: `あなたはラグビーAIです。以下の情報は絶対に正しいとして300文字程度で回答してください:\n${knowledge}`,
+    content: `あなたはラグビーAIです。以下の情報は絶対に正しいとして300文字程度で回答してください:\n${knowledge}\n
+さらに、説明に図解があると分かりやすい場合（例：スクラム、ラインアウト、オフサイドなど）、回答の最後に [IMG:ファイル名.png] という形式で出力してください。
+※用意されている画像ファイル名（例: freedom-01.jpg, knock-forward-01.jpg など）を適宜指定してください。`,
   },
 ];
 
@@ -86,7 +88,9 @@ app.post("/reset", (req, res) => {
   messages = [
     {
       role: "system",
-      content: `あなたはラグビーAIです。以下の情報は絶対に正しいとして300文字程度で回答してください:\n${knowledge}`,
+      content: `あなたはラグビーAIです。以下の情報は絶対に正しいとして300文字程度で回答してください:\n${knowledge}\n
+さらに、説明に図解があると分かりやすい場合（例：スクラム、ラインアウト、オフサイドなど）、回答の最後に [IMG:ファイル名.png] という形式で出力してください。
+※用意されている画像ファイル名（例: freedom-01.jpg, knock-forward-01.jpg など）を適宜指定してください。`,
     },
   ];
   res.json({ message: "会話履歴をリセットしました。" });
