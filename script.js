@@ -48,6 +48,20 @@ async function sendQuestion() {
     aiMsg.classList.remove("loading");
     aiMsg.textContent = "";
 
+    // ★追加: AIの返答から画像タグ [IMG:ファイル名] を抽出する
+    const rawText = data.answer || data.error;
+    const imgRegex = /\[IMG:(.+?)\]/g;
+    let imageFileName = null;
+    
+    // マッチする部分があればファイル名を保存
+    const match = imgRegex.exec(rawText);
+    if (match) {
+      imageFileName = match[1];
+    }
+    
+    // 文章中から [IMG:***] の部分を削除して、表示用のクリーンなテキストにする
+    const cleanText = rawText.replace(imgRegex, "").trim();
+
     // タイピングアニメーションで表示
     typeWriter(aiMsg, data.answer || data.error);
   } catch (err) {
