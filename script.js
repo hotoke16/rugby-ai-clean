@@ -44,26 +44,27 @@ async function sendQuestion() {
     });
     const data = await res.json();
 
-    // ローディングクラスを削除して内容をクリア
+// ローディングクラスを削除して内容をクリア
     aiMsg.classList.remove("loading");
     aiMsg.textContent = "";
 
-    // ★追加: AIの返答から画像タグ [IMG:ファイル名] を抽出する
+    // ★修正: AIの返答から複数の画像タグを「すべて」抽出する
     const rawText = data.answer || data.error;
-    const imgRegex = /\[IMG:(.+?)\]/g;
-    let imageFileName = null;
+    const imgRegex = /\[IMG:\s*([^\]]+?)\s*\]/g;
     
-    // マッチする部分があればファイル名を保存
-    const match = imgRegex.exec(rawText);
-    if (match) {
-      imageFileName = match[1];
+    // 見つかったすべてのファイル名を格納する配列（箱）
+    const imageFileNames = [];
+    let match;
+    // タグが見つかる限り、繰り返し配列に追加する
+    while ((match = imgRegex.exec(rawText)) !== null) {
+      imageFileNames.push(match[1].trim());
     }
     
-    // 文章中から [IMG:***] の部分を削除して、表示用のクリーンなテキストにする
+    // 文章中から [IMG:***] の部分をすべて削除
     const cleanText = rawText.replace(imgRegex, "").trim();
 
-    // タイピングアニメーションで表示
-    typeWriter(aiMsg, cleanText, 0, imageFileName);
+    // タイピングアニメーションで表示（画像ファイル名の「配列」を渡す）
+    typeWriter(aiMsg, cleanText, 0, imageFileNames);
   } catch (err) {
     aiMsg.classList.remove("loading");
     aiMsg.textContent = "";
@@ -90,32 +91,32 @@ function scrollToBottom() {
 // ==== typeWriter() 関数を以下のようにまるごと差し替えます ====
 // タイピング風に表示（改行対応あり）
 // 第4引数に画像ファイル名を受け取るように変更
-function typeWriter(element, text, i = 0, imageFileName = null) {
+function typeWriter(element, text, i = 0, imageFileNames = []) {
   if (i < text.length) {
     const char = text.charAt(i);
 
-    // 改行を <br> に変換（改行中もスクロール位置は動かさない）
     if (char === "\n") {
       element.innerHTML += "<br>";
     } else {
       element.innerHTML += char;
     }
 
-    setTimeout(() => typeWriter(element, text, i + 1, imageFileName), 30);
+    setTimeout(() => typeWriter(element, text, i + 1, imageFileNames), 30);
   } else {
-    // ★追加: タイピングが全て終わった後に、画像があれば要素として追加する
-    if (imageFileName) {
-      const img = document.createElement("img");
-      // 画像が格納されているフォルダパスを指定（例として 'images' フォルダ）
-      img.src = `./image/${imageFileName}`; 
-      img.className = "chat-image";
-      img.alt = "図解";
-      
-      // 画像が読み込まれたタイミングで一番下までスクロールさせる
-      img.onload = () => scrollToBottom();
-      
-      element.appendChild(document.createElement("br"));
-      element.appendChild(img);
+    // ★修正: タイピングが全て終わった後に、画像があれば「すべて」要素として追加する
+    if (imageFileNames && imageFileNames.length > 0) {
+      imageFileNames.forEach(fileName => {
+        const img = document.createElement("img");
+        img.src = `./images/${fileName}`; 
+        img.className = "chat-image";
+        img.alt = "図解";
+        
+        // 画像が読み込まれるたびに一番下までスクロールさせる
+        img.onload = () => scrollToBottom();
+        
+        element.appendChild(document.createElement("br"));
+        element.appendChild(img);
+      });
     }
   }
 }
