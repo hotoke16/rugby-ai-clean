@@ -107,7 +107,7 @@ function typeWriter(element, text, i = 0, imageFileName = null) {
     if (imageFileName) {
       const img = document.createElement("img");
       // 画像が格納されているフォルダパスを指定（例として 'images' フォルダ）
-      img.src = `./images/${imageFileName}`; 
+      img.src = `./image/${imageFileName}`; 
       img.className = "chat-image";
       img.alt = "図解";
       
