@@ -87,9 +87,10 @@ function scrollToBottom() {
   chatEnd.scrollIntoView({ behavior: "auto" });
 }
 
+// ==== typeWriter() 関数を以下のようにまるごと差し替えます ====
 // タイピング風に表示（改行対応あり）
-// AI処理中はスクロール位置を固定しない、完了時のみスクロール
-function typeWriter(element, text, i = 0) {
+// 第4引数に画像ファイル名を受け取るように変更
+function typeWriter(element, text, i = 0, imageFileName = null) {
   if (i < text.length) {
     const char = text.charAt(i);
 
@@ -100,7 +101,21 @@ function typeWriter(element, text, i = 0) {
       element.innerHTML += char;
     }
 
-    setTimeout(() => typeWriter(element, text, i + 1), 30);
+    setTimeout(() => typeWriter(element, text, i + 1, imageFileName), 30);
+  } else {
+    // ★追加: タイピングが全て終わった後に、画像があれば要素として追加する
+    if (imageFileName) {
+      const img = document.createElement("img");
+      // 画像が格納されているフォルダパスを指定（例として 'images' フォルダ）
+      img.src = `./images/${imageFileName}`; 
+      img.className = "chat-image";
+      img.alt = "図解";
+      
+      // 画像が読み込まれたタイミングで一番下までスクロールさせる
+      img.onload = () => scrollToBottom();
+      
+      element.appendChild(document.createElement("br"));
+      element.appendChild(img);
+    }
   }
 }
-
