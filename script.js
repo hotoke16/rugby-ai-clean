@@ -107,7 +107,7 @@ function typeWriter(element, text, i = 0, imageFileNames = []) {
     if (imageFileNames && imageFileNames.length > 0) {
       imageFileNames.forEach(fileName => {
         const img = document.createElement("img");
-        img.src = `./images/${fileName}`; 
+        img.src = `./image/${fileName}`; 
         img.className = "chat-image";
         img.alt = "図解";
         
