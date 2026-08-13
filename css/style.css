@@ -208,3 +208,16 @@ body {
     transform: scale(1);
   }
 }
+
+/* cssの末尾に追加 */
+
+/* チャット内に表示される図解画像のスタイル */
+.chat-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 15px;
+  display: block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 少し影をつけてリッチにする */
+  background-color: #fff; /* 背景が透過の画像を見やすくする */
+}
