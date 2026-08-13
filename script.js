@@ -63,7 +63,7 @@ async function sendQuestion() {
     const cleanText = rawText.replace(imgRegex, "").trim();
 
     // タイピングアニメーションで表示
-    typeWriter(aiMsg, data.answer || data.error);
+    typeWriter(aiMsg, cleanText, 0, imageFileName);
   } catch (err) {
     aiMsg.classList.remove("loading");
     aiMsg.textContent = "";
