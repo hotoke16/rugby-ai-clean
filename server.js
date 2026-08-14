@@ -93,18 +93,20 @@ app.post("/ask", async (req, res) => {
     messages.push({ role: "assistant", content: answer });
 
     // ==========================================
-    // ★ここから追加：開発者用の分析ログを記録する処理★
+    // ★追加：スプレッドシートへログを送信する処理
     // ==========================================
-    // 日本時間の現在時刻を取得
-    const now = new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
+    // 先ほどコピーした「ウェブアプリの URL」をここに貼ります
+    const gasUrl = "https://script.google.com/macros/s/AKfycbzNyrbUutdyHicXkPY6t-4YXW-V3NK3QA37gCC44GKTwPkRewUNQSKmwGN7Rlm8PDra/exec";
     
-    // ログに書き込むテキストのフォーマットを作成
-    const logText = `[${now}]\n👤 ユーザー: ${question}\n🤖 AI: ${answer}\n----------------------------------------\n`;
-    
-    // 'chat_log.txt' というファイルに追記していく（ファイルが無ければ自動作成されます）
-    fs.appendFileSync(path.join(__dirname, "chat_log.txt"), logText, "utf-8");
-    // ==========================================
-    // ★追加ここまで★
+    // サーバーの裏側でこっそりスプレッドシートへ送信（結果は待たない）
+    fetch(gasUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user: question,
+        ai: answer
+      })
+    }).catch(err => console.error("スプレッドシートへの送信エラー:", err));
     // ==========================================
 
     res.json({ answer });
