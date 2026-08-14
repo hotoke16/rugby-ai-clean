@@ -88,6 +88,21 @@ app.post("/ask", async (req, res) => {
     // AIの返答を履歴に追加
     messages.push({ role: "assistant", content: answer });
 
+    // ==========================================
+    // ★ここから追加：開発者用の分析ログを記録する処理★
+    // ==========================================
+    // 日本時間の現在時刻を取得
+    const now = new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
+    
+    // ログに書き込むテキストのフォーマットを作成
+    const logText = `[${now}]\n👤 ユーザー: ${question}\n🤖 AI: ${answer}\n----------------------------------------\n`;
+    
+    // 'chat_log.txt' というファイルに追記していく（ファイルが無ければ自動作成されます）
+    fs.appendFileSync(path.join(__dirname, "chat_log.txt"), logText, "utf-8");
+    // ==========================================
+    // ★追加ここまで★
+    // ==========================================
+
     res.json({ answer });
   } catch (error) {
     console.error("OpenAI API Error:", error);
