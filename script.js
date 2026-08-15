@@ -2,6 +2,16 @@ const textarea = document.getElementById("question");
 const sendBtn = document.getElementById("sendBtn");
 const chat = document.getElementById("chat");
 
+// ブラウザの記憶領域（localStorage）からユーザーIDを取得
+let currentUserId = localStorage.getItem("rugbyAI_userId");
+
+// もし初めてのアクセスでIDが無ければ、新しく作って記憶させる
+if (!currentUserId) {
+  // 「user_」の後にランダムな英数字をつけてIDにする（例: user_x8a9b2）
+  currentUserId = "user_" + Math.random().toString(36).substring(2, 9);
+  localStorage.setItem("rugbyAI_userId", currentUserId);
+}
+
 async function sendQuestion() {
   const question = textarea.value.trim();
   if (!question) return;
