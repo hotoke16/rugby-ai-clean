@@ -50,7 +50,11 @@ async function sendQuestion() {
     const res = await fetch("/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question })
+      // ★修正: questionと一緒にuserIdもサーバーへ投げる
+      body: JSON.stringify({ 
+        question: question,
+        userId: currentUserId 
+      })
     });
     const data = await res.json();
 
