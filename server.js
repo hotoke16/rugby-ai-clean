@@ -77,6 +77,8 @@ app.get("/", (req, res) => {
 
 app.post("/ask", async (req, res) => {
   const question = req.body.question;
+  // ★追加: フロントから送られてきた userId を受け取る
+  const userId = req.body.userId || "unknown";
 
   // ユーザーの質問を履歴に追加
   messages.push({ role: "user", content: question });
@@ -97,13 +99,14 @@ app.post("/ask", async (req, res) => {
     // ★追加：スプレッドシートへログを送信する処理
     // ==========================================
     // 先ほどコピーした「ウェブアプリの URL」をここに貼ります
-    const gasUrl = "https://script.google.com/macros/s/AKfycbzNyrbUutdyHicXkPY6t-4YXW-V3NK3QA37gCC44GKTwPkRewUNQSKmwGN7Rlm8PDra/exec";
+    const gasUrl = "https://script.google.com/macros/s/AKfycbxCr8UtGI4pdP1zuSgGDXKHN9IKvpcEbpbpPHiWnuFNToXE6xFTy7qAL1Y3pXdOiPk/exec";
     
     // サーバーの裏側でこっそりスプレッドシートへ送信（結果は待たない）
     fetch(gasUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        userId: userId, // ★追加: GASへ userId を渡す
         user: question,
         ai: answer
       })
