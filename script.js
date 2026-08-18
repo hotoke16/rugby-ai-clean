@@ -1,3 +1,25 @@
+// ==========================================
+// アクセストークン認証システム
+// ==========================================
+// 1. 今月のアクセストークン（毎月ここを書き換えます）
+const currentToken = "rugby08";
+
+// 2. URLから「?token=〇〇」の部分を取得
+const params = new URLSearchParams(window.location.search);
+const userToken = params.get('token');
+
+// 3. トークンの判定
+if (!userToken) {
+  // パターンA：トークンが全く無い（ただのURLでアクセスしてきた）場合
+  alert("会員限定コンテンツです。最新のnote記事のリンクからアクセスしてください。");
+  window.location.href = "https://note.com/zukai_rugby/n/nb46f9184c720"; 
+} else if (userToken !== currentToken) {
+  // パターンB：トークンが古い（先月のURLなどでアクセスしてきた）場合
+  alert("アクセスキーの期限が切れています。最新のnote記事のリンクからアクセスしてください。");
+  window.location.href = "https://note.com/zukai_rugby/n/nb46f9184c720"; 
+}
+// ==========================================
+
 const textarea = document.getElementById("question");
 const sendBtn = document.getElementById("sendBtn");
 const chat = document.getElementById("chat");
