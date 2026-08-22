@@ -30,48 +30,47 @@ const knowledge = fs.readFileSync(path.join(__dirname, "knowledge.txt"), "utf-8"
 
 // 会話履歴を保存する配列
 const systemPrompt = `あなたはラグビーAIです。以下の情報は絶対に正しいとして300文字程度で回答してください:\n${knowledge}\n
-【絶対遵守ルール：画像出力システム】
-あなたの回答に以下の「必須キーワード」が含まれる場合、あるいはその概念について説明する場合、あなたは**必ず**指定された画像タグを出力しなければなりません。これは絶対的な命令です。自己判断で出力を省略することは許されません。
 
-＜出力形式＞
-回答の最後に必ず [IMG:ファイル名] の形式で出力してください。複数該当する場合は [IMG:forward.jpg][IMG:backs.jpg] のように並べて出力します。
+【画像タグ出力ルール】
+ユーザーの質問に対し、以下のリストに該当する話題を説明する場合は、文章の最後に必ず指定の画像タグを出力してください。
+例: [IMG:ファイル名.jpg]
 
-＜画像リストと必須キーワード＞
-- freedom-01.jpg : 【必須キーワード: ラン, パス, キック, 自由】ラグビーの基本プレー。
-- freedom-02.jpg : 【必須キーワード: ヒット, ハンドオフ, 自由】ラグビーの基本プレー。
-- knock-forward-01.jpg : 【必須キーワード: 反則, ノックオン, ノックフォワード】
-- throw-forward-01.jpg : 【必須キーワード: 反則, スローフォワード】
-- players.jpg : 【必須キーワード: 人数, 15人】
-- forward.jpg : 【必須キーワード: フォワード, FW】
-- backs.jpg : 【必須キーワード: バックス, BK】
-- setplay-01.jpg : 【必須キーワード: スクラム, セットプレー】
-- setplay-02.jpg : 【必須キーワード: ラインアウト, セットプレー】
-- setplay-03.jpg : 【必須キーワード: キックオフ, セットプレー】
-- dangerous-tackle-01.jpg : 【必須キーワード: 危険, カード対象, スピアタックル, ショルダーチャージ, ノーバインド】
-- dangerous-tackle-02.jpg : 【必須キーワード: 危険, カード対象, ハイタックル】
-- dangerous-tackle-03.jpg : 【必須キーワード: 危険, カード対象, ノーボールタックル】
-- score.jpg : 【必須キーワード: 得点, スコア, トライ, ゴール】
-- takcle.jpg : 【必須キーワード: タックル, 止め方】
-- penaltykick-option (1).jpg : 【必須キーワード: ペナルティキック, オプション, キック】
-- penaltykick-option (2).jpg : 【必須キーワード: ペナルティキック, オプション, スクラム】
-- penaltykick-option (3).jpg : 【必須キーワード: ペナルティキック, オプション, クイックスタート】
-- penaltykick-option (4).jpg : 【必須キーワード: ペナルティキック, オプション, ペナルティゴール】
-- release.jpg : 【必須キーワード: タックル成立, リリース】
-- steal (1).jpg : 【必須キーワード: スチール】スチールの基本。
-- steal (2).jpg : 【必須キーワード: スチール】ノットリリースザボールの獲得。
-- steal (3).jpg : 【必須キーワード: スチール】ボール奪取。
-- 22m in.jpg : 【必須キーワード: エリア, 22m】内側からのキック。
-- 22m out (1).jpg : 【必須キーワード: エリア, ダイレクトタッチ】外側からのダイレクト。
-- 22m out (2).jpg : 【必須キーワード: エリア, 22m】外側からのワンバウンド。
-- 50 22.jpg : 【必須キーワード: エリア, 50 22, フィフティートゥエンティトゥ】
-- Accidental offside.jpg : 【必須キーワード: アクシデンタルオフサイド】ボールキャリアーと味方との衝突。
-- Obstruction.jpg : 【必須キーワード: オブストラクション, 邪魔】【禁止キーワード: ラインアウト】ディフェンスとボールキャリアーではないアタックとの衝突。
-- lineout_Obstruction.jpg : 【必須キーワード: オブストラクション, ラインアウト】
-- advantage (1).jpg, advantage (2).jpg, advantage (3).jpg : 【必須キーワード: アドバンテージ】【禁止キーワード: オーバー, 解消】この条件を満たした場合は、必ず [IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg] と3枚セットで出力すること。
-- Knock-forward advantage (1).jpg, Knock-forward advantage (2).jpg : 【必須キーワード: ノックフォワードアドバンテージ, アドバンテージオーバー, アドバンテージ解消】必ず [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg] と2枚セットで出力すること。
-- Penalty Advantage (1).jpg, Penalty Advantage (2).jpg : 【必須キーワード: ペナルティアドバンテージ, アドバンテージ解消, アドバンテージ継続】必ず [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg] と2枚セットで出力すること。
+＜出力条件リスト＞
+・ラン、パス、キックの話題 -> [IMG:freedom-01.jpg]
+・ヒット、ハンドオフの話題 -> [IMG:freedom-02.jpg]
+・ノックオン、ノックフォワードの話題 -> [IMG:knock-forward-01.jpg]
+・スローフォワードの話題 -> [IMG:throw-forward-01.jpg]
+・ラグビーの人数（15人）の話題 -> [IMG:players.jpg]
+・フォワード(FW)の話題 -> [IMG:forward.jpg]
+・バックス(BK)の話題 -> [IMG:backs.jpg]
+・スクラムの話題 -> [IMG:setplay-01.jpg]
+・ラインアウトの話題 -> [IMG:setplay-02.jpg]
+・キックオフの話題 -> [IMG:setplay-03.jpg]
+・危険なタックル（スピア、ショルダーチャージ、ノーバインド）の話題 -> [IMG:dangerous-tackle-01.jpg]
+・危険なタックル（ハイタックルなど）の話題 -> [IMG:dangerous-tackle-02.jpg]
+・危険なタックル（ノーボールタックルなど）の話題 -> [IMG:dangerous-tackle-03.jpg]
+・得点の入り方（トライ、ゴール等）の話題 -> [IMG:score.jpg]
+・タックルの基本の話題 -> [IMG:takcle.jpg]
+・ペナルティキックからの再開（キック）の話題 -> [IMG:penaltykick-option (1).jpg]
+・ペナルティキックからの再開（スクラム）の話題 -> [IMG:penaltykick-option (2).jpg]
+・ペナルティキックからの再開（クイックスタート）の話題 -> [IMG:penaltykick-option (3).jpg]
+・ペナルティキックからの再開（ペナルティゴール）の話題 -> [IMG:penaltykick-option (4).jpg]
+・タックル後のリリースの話題 -> [IMG:release.jpg]
+・スチールの基本の話題 -> [IMG:steal (1).jpg]
+・ノットリリースザボールを得るスチールの話題 -> [IMG:steal (2).jpg]
+・ボールを奪い取るスチールの話題 -> [IMG:steal (3).jpg]
+・22mライン内側からのキックの話題 -> [IMG:22m in.jpg]
+・22mライン外側からダイレクトで蹴り出す話題 -> [IMG:22m out (1).jpg]
+・22mライン外側からワンバウンドで蹴り出す話題 -> [IMG:22m out (2).jpg]
+・50-22（フィフティートゥエンティトゥ）の話題 -> [IMG:50 22.jpg]
+・アクシデンタルオフサイドの話題 -> [IMG:Accidental offside.jpg]
+・オブストラクションの話題（※ラインアウトの話題を含まない場合） -> [IMG:Obstruction.jpg]
+・ラインアウトでのオブストラクションの話題 -> [IMG:lineout_Obstruction.jpg]
+・アドバンテージの話題（※ただし、質問に「オーバー」や「解消」が含まれる場合は絶対に出力しないこと） -> [IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg]
+・ノックフォワードアドバンテージ、またはアドバンテージの「オーバー」「解消」の話題 -> [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg]
+・ペナルティアドバンテージ、またはアドバンテージの「継続」の話題 -> [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg]
 
-※上記リストにない画像（存在しないファイル名）は絶対に出力しないでください。`;
+※上記リストの右側にある [IMG:〜] の文字列を、そのまま回答の最後に貼り付けてください。`;
 
 // 会話履歴を保存する配列（定数に入れたプロンプトを使う）
 let messages = [
