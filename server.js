@@ -66,13 +66,9 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・アクシデンタルオフサイドの話題 -> [IMG:Accidental offside.jpg]
 ・オブストラクションの話題（※ラインアウトの話題を含まない場合） -> [IMG:Obstruction.jpg]
 ・ラインアウトでのオブストラクションの話題 -> [IMG:lineout_Obstruction.jpg]
-・質問に「アドバンテージオーバー」または「アドバンテージが解消」と含まれる話題 -> [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg]
-・質問に「アドバンテージが継続」と含まれる話題 -> [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg]
-・「ノックフォワードアドバンテージ」の話題 -> [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg]
-・「ペナルティアドバンテージ」の話題 -> [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg]
-・上記以外の、一般的な「アドバンテージ」の話題 -> [IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg]
+・「アドバンテージ」の話題 -> [IMG:Advantage (1).jpg][IMG:Advantage (2).jpg][IMG:Advantage (3).jpg][IMG:Advantage (4).jpg][IMG:Advantage (5).jpg][IMG:Advantage (6).jpg][IMG:Advantage (7).jpg][IMG:Advantage (8).jpg][IMG:Advantage (9).jpg]
 
-※上記リストの右側にある [IMG:〜] の文字列を、そのまま回答の最後に貼り付けてください。`;
+※上記リストの右側にある [IMG:〜] から始まる文字列を、勝手に一部を消したり減らしたりせず、そのまま回答の最後に貼り付けてください。`;
 
 // 会話履歴を保存する配列（定数に入れたプロンプトを使う）
 let messages = [
