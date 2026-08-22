@@ -71,6 +71,8 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・オブストラクションの話題（※ラインアウトの話題を含まない場合） -> [IMG:Obstruction.jpg]
 ・ラインアウトでのオブストラクションの話題 -> [IMG:lineout_Obstruction.jpg]
 ・「アドバンテージ」を体系的に説明する話題 -> [IMG:Advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg][IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg][IMG:advantage (7).jpg][IMG:advantage (8).jpg]
+・「ノックフォワードアドバンテージ」のみに絞った話題 -> [IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg]
+・「ペナルティアドバンテージ」のみに絞った話題 -> [IMG:advantage (7).jpg][IMG:advantage (8).jpg]
 
 ※上記リストの右側にある [IMG:〜] から始まる文字列を、勝手に一部を消したり減らしたりせず、そのまま回答の最後に貼り付けてください。`;
 
