@@ -66,9 +66,11 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・アクシデンタルオフサイドの話題 -> [IMG:Accidental offside.jpg]
 ・オブストラクションの話題（※ラインアウトの話題を含まない場合） -> [IMG:Obstruction.jpg]
 ・ラインアウトでのオブストラクションの話題 -> [IMG:lineout_Obstruction.jpg]
-・アドバンテージの話題（※ただし、質問に「オーバー」や「解消」が含まれる場合は絶対に出力しないこと） -> [IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg]
-・ノックフォワードアドバンテージ、またはアドバンテージの「オーバー」「解消」の話題 -> [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg]
-・ペナルティアドバンテージ、またはアドバンテージの「継続」の話題 -> [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg]
+・質問に「オーバー」または「解消」が含まれるアドバンテージの話題 -> [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg]
+・質問に「継続」が含まれるアドバンテージの話題 -> [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg]
+・「ノックフォワードアドバンテージ」の話題 -> [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg]
+・「ペナルティアドバンテージ」の話題 -> [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg]
+・上記以外の、一般的な「アドバンテージ」の話題 -> [IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg]
 
 ※上記リストの右側にある [IMG:〜] の文字列を、そのまま回答の最後に貼り付けてください。`;
 
