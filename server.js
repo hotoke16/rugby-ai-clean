@@ -40,9 +40,11 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・ヒット、ハンドオフの話題 -> [IMG:freedom-02.jpg]
 ・ノックオン、ノックフォワードの話題 -> [IMG:knock-forward-01.jpg]
 ・スローフォワードの話題 -> [IMG:throw-forward-01.jpg]
+・ラグビーの人数やポジションを体系的に説明する話題 -> [IMG:players.jpg][IMG:forward.jpg][IMG:backs.jpg]
 ・ラグビーの人数（15人）の話題 -> [IMG:players.jpg]
 ・フォワード(FW)の話題 -> [IMG:forward.jpg]
 ・バックス(BK)の話題 -> [IMG:backs.jpg]
+・セットプレーについて体系的に説明する話題 -> [IMG:setplay-01.jpg][IMG:setplay-02.jpg][IMG:setplay-03.jpg]
 ・スクラムの話題 -> [IMG:setplay-01.jpg]
 ・ラインアウトの話題 -> [IMG:setplay-02.jpg]
 ・キックオフの話題 -> [IMG:setplay-03.jpg]
@@ -51,6 +53,7 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・危険なタックル（ノーボールタックルなど）の話題 -> [IMG:dangerous-tackle-03.jpg]
 ・得点の入り方（トライ、ゴール等）の話題 -> [IMG:score.jpg]
 ・タックルの基本の話題 -> [IMG:takcle.jpg]
+・ペナルティキックのオプションを体系的に説明する話題 -> [IMG:penaltykick-option (1).jpg][IMG:penaltykick-option (2).jpg][IMG:penaltykick-option (3).jpg][IMG:penaltykick-option (4).jpg]
 ・ペナルティキックからの再開（キック）の話題 -> [IMG:penaltykick-option (1).jpg]
 ・ペナルティキックからの再開（スクラム）の話題 -> [IMG:penaltykick-option (2).jpg]
 ・ペナルティキックからの再開（クイックスタート）の話題 -> [IMG:penaltykick-option (3).jpg]
@@ -59,6 +62,7 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・スチールの基本の話題 -> [IMG:steal (1).jpg]
 ・ノットリリースザボールを得るスチールの話題 -> [IMG:steal (2).jpg]
 ・ボールを奪い取るスチールの話題 -> [IMG:steal (3).jpg]
+・キックの出し方と再開場所を体系的に説明する話題 -> [IMG:22m in.jpg][IMG:22m out (1).jpg][IMG:22m out (2).jpg][IMG:50 22.jpg]
 ・22mライン内側からのキックの話題 -> [IMG:22m in.jpg]
 ・22mライン外側からダイレクトで蹴り出す話題 -> [IMG:22m out (1).jpg]
 ・22mライン外側からワンバウンドで蹴り出す話題 -> [IMG:22m out (2).jpg]
@@ -66,7 +70,7 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 ・アクシデンタルオフサイドの話題 -> [IMG:Accidental offside.jpg]
 ・オブストラクションの話題（※ラインアウトの話題を含まない場合） -> [IMG:Obstruction.jpg]
 ・ラインアウトでのオブストラクションの話題 -> [IMG:lineout_Obstruction.jpg]
-・「アドバンテージ」の話題 -> [IMG:Advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg][IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg][IMG:advantage (7).jpg][IMG:advantage (8).jpg]
+・「アドバンテージ」を体系的に説明する話題 -> [IMG:Advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg][IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg][IMG:advantage (7).jpg][IMG:advantage (8).jpg]
 
 ※上記リストの右側にある [IMG:〜] から始まる文字列を、勝手に一部を消したり減らしたりせず、そのまま回答の最後に貼り付けてください。`;
 
