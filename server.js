@@ -64,16 +64,12 @@ const systemPrompt = `あなたはラグビーAIです。以下の情報は絶�
 - 22m out (1).jpg : 【必須キーワード: エリア, ダイレクトタッチ】外側からのダイレクト。
 - 22m out (2).jpg : 【必須キーワード: エリア, 22m】外側からのワンバウンド。
 - 50 22.jpg : 【必須キーワード: エリア, 50 22, フィフティートゥエンティトゥ】
-- Accidental offside.jpg : 【必須キーワード: アクシデンタルオフサイド】味方との衝突。
-- Obstruction.jpg : 【必須キーワード: オブストラクション, 邪魔】※ただし「ラインアウト」に関する説明の時は絶対に出力しないこと。
+- Accidental offside.jpg : 【必須キーワード: アクシデンタルオフサイド】ボールキャリアーと味方との衝突。
+- Obstruction.jpg : 【必須キーワード: オブストラクション, 邪魔】【禁止キーワード: ラインアウト】ディフェンスとボールキャリアーではないアタックとの衝突。
 - lineout_Obstruction.jpg : 【必須キーワード: オブストラクション, ラインアウト】
-- advantage (1).jpg : 【必須キーワード: アドバンテージ】※ただし「解消」「オーバー」の説明の時は絶対に出力しないこと。
-- advantage (2).jpg : 【必須キーワード: アドバンテージ】※ただし「解消」「オーバー」の説明の時は絶対に出力しないこと。
-- advantage (3).jpg : 【必須キーワード: アドバンテージ】※ただし「解消」「オーバー」の説明の時は絶対に出力しないこと。
-- Knock-forward advantage (1).jpg : 【必須キーワード: ノックフォワードアドバンテージ, アドバンテージオーバー, アドバンテージ解消】
-- Knock-forward advantage (2).jpg : 【必須キーワード: ノックフォワードアドバンテージ, アドバンテージオーバー, アドバンテージ解消】
-- Penalty Advantage (1).jpg : 【必須キーワード: ペナルティアドバンテージ, アドバンテージ解消, アドバンテージ継続】
-- Penalty Advantage (2).jpg : 【必須キーワード: ペナルティアドバンテージ, アドバンテージ解消, アドバンテージ継続】
+- advantage (1).jpg, advantage (2).jpg, advantage (3).jpg : 【必須キーワード: アドバンテージ】【禁止キーワード: オーバー, 解消】この条件を満たした場合は、必ず [IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg] と3枚セットで出力すること。
+- Knock-forward advantage (1).jpg, Knock-forward advantage (2).jpg : 【必須キーワード: ノックフォワードアドバンテージ, アドバンテージオーバー, アドバンテージ解消】必ず [IMG:Knock-forward advantage (1).jpg][IMG:Knock-forward advantage (2).jpg] と2枚セットで出力すること。
+- Penalty Advantage (1).jpg, Penalty Advantage (2).jpg : 【必須キーワード: ペナルティアドバンテージ, アドバンテージ解消, アドバンテージ継続】必ず [IMG:Penalty Advantage (1).jpg][IMG:Penalty Advantage (2).jpg] と2枚セットで出力すること。
 
 ※上記リストにない画像（存在しないファイル名）は絶対に出力しないでください。`;
 
