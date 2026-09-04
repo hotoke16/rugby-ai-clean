@@ -1,0 +1,11 @@
+{
+  "folders": [
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "zukai-rugby",
+    "github.copilot.nextEditSuggestions.enabled": true
+  }
+}

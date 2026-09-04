@@ -1,0 +1,552 @@
+@charset "UTF-8";
+body {
+  font-family: "Yusei Magic", "Poetsen One", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.header {
+<<<<<<< HEAD
+  background: #4c7b9d;
+=======
+  background: #0a3d62;
+>>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.header__title {
+  font-size: 40px;
+}
+
+.chat-container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 10px;
+  padding-bottom: 140px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 80px;
+}
+
+.chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+<<<<<<< HEAD
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  white-space: pre-wrap;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-bottom: 25px;
+=======
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  white-space: pre-wrap;
+>>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
+}
+
+#chatEnd {
+  height: 0; /* 入力欄の高さに合わせて調整 */
+}
+
+.message {
+  padding: 12px 18px;
+  border-radius: 12px;
+  line-height: 1.6;
+<<<<<<< HEAD
+  max-width: 85%;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 767px) {
+  .message {
+    max-width: 100%;
+  }
+=======
+  max-width: 80%;
+  word-wrap: break-word;
+>>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
+}
+
+.user {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background: #38ada9;
+  color: #fff;
+}
+
+.ai {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.input-area {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  background: #f5f6fa;
+  border-top: 1px solid #ccc;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto; /* 高さ固定 */
+  z-index: 200;
+}
+
+.input-box {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 767px) {
+  .input-box {
+    display: block;
+  }
+}
+
+#question {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 10px;
+  border: 2px solid #0a3d62;
+  border-radius: 10px;
+  resize: none;
+  font-size: 1rem;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#sendBtn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: #38ada9;
+  color: white;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+@media screen and (max-width: 767px) {
+  #sendBtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+#sendBtn:hover {
+  background: rgb(43.5283842795, 134.4716157205, 131.3624454148);
+<<<<<<< HEAD
+}
+/* AIローディングアニメーション */
+.ai.loading::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin-left: 4px;
+  animation: dot-pulse 1.4s infinite;
+}
+
+.ai.loading::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin-left: 4px;
+  animation: dot-pulse 1.4s infinite 0.2s;
+}
+
+.loading-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin: 0 2px;
+  animation: dot-pulse 1.4s infinite 0.4s;
+}
+
+@keyframes dot-pulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* cssの末尾に追加 */
+
+/* ==========================================
+   チャット内の画像レイアウト
+   ========================================== */
+
+/* 画像をまとめるコンテナ */
+.chat-image-container {
+  display: grid;
+  gap: 15px; /* 画像と画像の隙間 */
+  margin-top: 15px; /* 上のテキストとの隙間 */
+}
+
+/* PC画面など、幅が900px以上の時は自動的に2列にする */
+@media screen and (min-width: 769px) {
+  .chat-image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 個別の画像のスタイル（上書き） */
+.chat-image {
+  width: 100%; /* コンテナ（1列分）の幅にピタッと合わせる */
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 0; /* 隙間はコンテナ側で制御するので0にする */
+  display: block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  background-color: #fff; 
+  object-fit: contain; /* 画像の比率を崩さない */
+}
+
+/* ==========================================
+   会話保存機能のデザイン（サイドバー開閉対応版）
+   ========================================== */
+
+/* ▼ 新規追加：開閉用のボタン ▼ */
+.history-toggle-btn {
+  position: fixed;
+  top: 85px; /* ヘッダーのすぐ下 */
+  right: 15px;
+  z-index: 160;
+  background-color: #4c7b9d; /* ヘッダーと同じ青色 */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: 0.2s;
+}
+
+.history-toggle-btn:hover {
+  background-color: #3a5d7c;
+}
+
+/* ▼ 修正：履歴コンテナ（スライドアニメーションを追加） ▼ */
+.history-container {
+  position: fixed;
+  top: 135px; /* 開閉ボタンの下に配置 */
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 150;
+  max-height: calc(100vh - 250px); /* 画面下部の入力欄に被らないように高さを自動計算 */
+  overflow-y: auto;
+  padding-right: 5px;
+  
+  /* --- ここからスライドアニメーションの設定 --- */
+  transform: translateX(120%); /* 初期状態は画面の右外に隠しておく */
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out; /* 0.3秒かけて滑らかに動かす */
+}
+
+/* JavaScriptで「open」クラスが付いた時に画面内にスライドインさせる */
+.history-container.open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* スクロールバーの見た目を細く綺麗にする（パソコン用） */
+.history-container::-webkit-scrollbar {
+  width: 6px;
+}
+.history-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 3px;
+}
+
+/* 履歴と×ボタンをまとめる枠 */
+.history-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 160px; /* タイトルを表示するための幅 */
+}
+
+/* 新規作成（＋）ボタン */
+.history-new-btn {
+  width: 160px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #00897b; 
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+.history-new-btn:hover {
+  background-color: #00695c;
+}
+
+/* 履歴を呼び出すテキストボタン（タイトル表示用） */
+.history-item-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  padding: 0 30px 0 15px; /* 右側に×ボタン用の余白をあける */
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 文字が長すぎる場合は「...」にする */
+  transition: 0.2s;
+}
+.history-item-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* ×（削除）ボタン（枠の中の右側に配置） */
+.delete-history-btn {
+  position: absolute;
+  right: 5px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-history-btn:hover {
+  color: #ffcccc; /* ホバー時に少し赤を薄く */
+}
+
+/* 保存ボタンのラッパー */
+.save-btn-wrapper {
+  position: absolute;
+  top: -55px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 150;
+}
+
+/* 保存ボタン本体 */
+.save-btn {
+  background-color: #fff;
+  color: #d32f2f;
+  border: 3px solid #d32f2f;
+  border-radius: 25px;
+  padding: 8px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.save-btn:hover {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+/* スマホ表示の時の調整 */
+@media screen and (max-width: 767px) {
+  .chat-container {
+    padding-bottom: 220px; /* チャット画面の底上げを少し増やす */
+  }
+  
+  /* ▼ここを追加：スマホ時は履歴リストの高さを短くして、最後までスクロールできるようにする▼ */
+  .history-container {
+    max-height: calc(100vh - 340px); 
+  }
+}
+
+/* =========================================
+   画像拡大ビューワーの基本スタイル
+========================================= */
+#image-viewer {
+    position: fixed;
+    left: 0;
+    bottom: 0;       /* 追加：常に画面下部に固定 */
+    width: 100%;
+    height: 50vh;    /* 追加：常に画面の縦半分（50%）の高さ */
+    border-top-left-radius: 20px;  /* 追加：上部の角丸 */
+    border-top-right-radius: 20px; /* 追加：上部の角丸 */
+    background-color: #f8f9fa;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 隠れている時の状態（画面の下に待機） */
+.image-viewer-hidden {
+    transform: translateY(120%);
+}
+
+/* 表示されている時の状態 */
+.image-viewer-visible {
+    transform: translateY(0);
+}
+
+#viewer-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #555;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+}
+
+#viewer-img {
+    max-width: 95%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: opacity 0.2s ease-in-out; /* 半角スペースできれいに修正 */
+}
+
+/* =========================================
+   スマホ（画面幅768px以下）専用のレイアウト
+========================================= */
+@media (max-width: 768px) {
+    /* 1. 画像を確実に3列のグリッドにするためのコンテナ設定 */
+    .chat-image-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px; /* 画像同士の隙間 */
+        margin-top: 8px;
+    }
+
+    /* 2. コンテナ内の画像を3列サイズに固定 */
+    .chat-image-container img {
+        width: 31% !important;
+        height: auto !important;
+        flex: 1 1 31%;
+        max-width: 31%;
+        border-radius: 5px;
+        cursor: pointer;
+        object-fit: cover;
+    }
+
+    /* 画像拡大ビューワーを画面下半分に固定 */
+    #image-viewer {
+        bottom: 0;
+        height: 50vh;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+}
+
+/* =========================================
+   画像切り替えボタン（PC用ナビゲーション）
+========================================= */
+.viewer-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒背景 */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 2002;
+    display: none; /* デフォルトは非表示。JSで枚数に応じて表示する */
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.viewer-nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* ボタンの位置 */
+#viewer-prev-btn { left: 5%; }
+#viewer-next-btn { right: 5%; }
+=======
+}
+>>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
