@@ -2,17 +2,12 @@
   "name": "rugby-ai",
   "version": "1.0.0",
   "description": "A chat AI specializing in Rugby knowledge.",
-<<<<<<< HEAD
   "main": "server.js",
-=======
-  "main": "server.js",              
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
   "type": "module",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-<<<<<<< HEAD
   "keywords": [
     "rugby",
     "ai",
@@ -23,19 +18,8 @@
   "dependencies": {
     "@google/genai": "latest",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2"
-  }
-}
-=======
-  "keywords": ["rugby", "ai", "chat"],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
-    "express": "^5.1.0",
+    "express": "^4.18.2",
     "openai": "^5.12.2"
   }
 }
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
