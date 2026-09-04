@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // ==========================================
 // アクセストークン認証システム
 // ==========================================
@@ -30,8 +29,6 @@ if (!localUserId) {
     localStorage.setItem("rugbyAI_userId", localUserId);
 }
 
-=======
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
 const textarea = document.getElementById("question");
 const sendBtn = document.getElementById("sendBtn");
 const chat = document.getElementById("chat");
@@ -48,7 +45,6 @@ async function sendQuestion() {
 
   textarea.value = "";
 
-<<<<<<< HEAD
   // AIメッセージ枠を作成（ローディング状態）
   const aiMsg = document.createElement("div");
   aiMsg.className = "message ai loading";
@@ -65,18 +61,12 @@ async function sendQuestion() {
   aiMsg.appendChild(dot2);
   aiMsg.appendChild(dot3);
   
-=======
-  // AIメッセージ枠を作成
-  const aiMsg = document.createElement("div");
-  aiMsg.className = "message ai";
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
   chat.appendChild(aiMsg);
 
   // 送信直後にスクロール
   scrollToBottom();
 
   // サーバーに送信
-<<<<<<< HEAD
     try {
       const res = await fetch("/ask", {
         method: "POST",
@@ -110,19 +100,6 @@ async function sendQuestion() {
   } catch (err) {
     aiMsg.classList.remove("loading");
     aiMsg.textContent = "";
-=======
-  try {
-    const res = await fetch("http://localhost:3000/ask", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question })
-    });
-    const data = await res.json();
-
-    // タイピングアニメーションで表示
-    typeWriter(aiMsg, data.answer || data.error);
-  } catch (err) {
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
     typeWriter(aiMsg, "サーバーに接続できませんでした。");
   }
 }
@@ -135,19 +112,14 @@ textarea.addEventListener("keydown", (e) => {
   }
 });
 
-<<<<<<< HEAD
 // 送信ボタンのクリック
 if (sendBtn) {
     sendBtn.addEventListener("click", sendQuestion);
 }
-=======
-sendBtn.addEventListener("click", sendQuestion);
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
 
 // 常に一番下までスクロール
 function scrollToBottom() {
   const chatEnd = document.getElementById("chatEnd");
-<<<<<<< HEAD
   if(chatEnd) chatEnd.scrollIntoView({ behavior: "auto" });
 }
 
@@ -156,24 +128,12 @@ function typeWriter(element, text, i = 0, imageFileNames = []) {
   if (i < text.length) {
     const char = text.charAt(i);
 
-=======
-  chatEnd.scrollIntoView({ behavior: "auto" });
-}
-
-// タイピング風に表示（改行対応あり）
-function typeWriter(element, text, i = 0) {
-  if (i < text.length) {
-    const char = text.charAt(i);
-
-    // 改行を <br> に変換
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
     if (char === "\n") {
       element.innerHTML += "<br>";
     } else {
       element.innerHTML += char;
     }
 
-<<<<<<< HEAD
     setTimeout(() => typeWriter(element, text, i + 1, imageFileNames), 30);
   } else {
     // タイピングが全て終わった後に画像をコンテナに入れて追加
@@ -418,11 +378,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 200); 
     }
 });
-=======
-    scrollToBottom(); // 文字が増えるごとにスクロール
-
-    setTimeout(() => typeWriter(element, text, i + 1), 30);
-  }
-}
-
->>>>>>> 465b6e0336712385a0221c6424c88499693e6c72
