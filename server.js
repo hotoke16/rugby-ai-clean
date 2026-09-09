@@ -125,7 +125,7 @@ app.post("/ask", async (req, res) => {
         if (question.includes("タックル") || question.includes("ラック") || question.includes("モール") || question.includes("倒れ") || question.includes("ジャッカル") || question.includes("スチール") || question.includes("ヒット") || question.includes("ノットロ") || question.includes("ノットリ") || question.includes("サイド") || question.includes("オフザ")) {
             knowledgeList.push(textBreakdown);
         }
-        if (question.includes("スクラム") || question.includes("ラインアウト") || question.includes("タッチ") || question.includes("スローイン") || question.includes("投入") || question.includes("SC") || question.includes("LO")) {
+        if (question.includes("スクラム") || question.includes("ラインアウト") || question.includes("タッチ") || question.includes("スローイン") || question.includes("投入") || question.includes("SC") || question.includes("マークオブタッチ")) {
             knowledgeList.push(textSetplay);
         }
         if (question.includes("タックル") || question.includes("反則") || question.includes("ペナルティ") || question.includes("オフサイド") || question.includes("ノッ") || question.includes("スローフォワード") || question.includes("アドバンテージ") || question.includes("落とし") || question.includes("笛") || question.includes("PK") || question.includes("危険") || question.includes("オブスト") || question.includes("邪魔")) {
