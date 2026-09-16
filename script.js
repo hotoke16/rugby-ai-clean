@@ -378,3 +378,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 200); 
     }
 });
+
+// 「本AIについて」モーダルの開閉処理
+document.addEventListener('DOMContentLoaded', () => {
+  const aboutBtn = document.getElementById('about-btn');
+  const aboutModal = document.getElementById('about-modal');
+  const aboutCloseBtn = document.getElementById('about-close-btn');
+
+  // 開く
+  if (aboutBtn && aboutModal) {
+    aboutBtn.addEventListener('click', () => {
+      aboutModal.classList.add('is-open');
+    });
+  }
+
+  // 閉じる (×ボタン)
+  if (aboutCloseBtn && aboutModal) {
+    aboutCloseBtn.addEventListener('click', () => {
+      aboutModal.classList.remove('is-open');
+    });
+  }
+
+  // モーダルの背景（黒い部分）をクリックしても閉じるようにする
+  if (aboutModal) {
+    aboutModal.addEventListener('click', (e) => {
+      if (e.target === aboutModal) {
+        aboutModal.classList.remove('is-open');
+      }
+    });
+  }
+});

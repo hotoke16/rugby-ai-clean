@@ -36,6 +36,7 @@
 
 <body>
   <header class="header">
+    <button id="about-btn" class="about-btn">本AIについて</button>
     <div class="header__title">ラグビーAI</div>
   </header>
 
@@ -65,6 +66,23 @@
       <button id="sendBtn">送信</button>
     </div>
   </footer>
+
+  <div id="about-modal" class="about-modal">
+    <div class="about-modal__content">
+      <button id="about-close-btn" class="about-modal__close">×</button>
+      <h2 class="about-modal__title">本AIについて</h2>
+      <div class="about-modal__text">
+        <p><strong>① 会話が苦手です</strong><br>
+        「ラグビーの人数は？」→「15人です（FW8人、BK7人）」と答えた後、「7人は？」と聞くと、「7人制ラグビーという競技もあります」と、前の会話を忘れます。毎回主語を入れた1問1答の形式で聞くと正確に答えます。</p>
+
+        <p><strong>② 誤字脱字や「ひらがな」に弱いです</strong><br>
+        「のっくおん」など本来カタカナの用語をひらがなで入力したり、タイプミスがあると、処理できないことがあります。</p>
+
+        <p><strong>③ 返答スピードにムラがあります（3秒〜90秒）</strong><br>
+        一瞬で図解を出してくる時もあれば90秒ほど沈黙する時もあります。ラグビーに詳しい友達とLINEしている感覚で待ってください。</p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js?ver=2"></script>
 </body>

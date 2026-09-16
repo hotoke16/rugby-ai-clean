@@ -122,7 +122,7 @@ app.post("/ask", async (req, res) => {
         // --- 2. 質問からキーワードを判定し、必要なテキストだけを選ぶ ---
         let knowledgeList = [];
 
-        if (question.includes("タックル") || question.includes("ラック") || question.includes("モール") || question.includes("倒れ") || question.includes("ジャッカル") || question.includes("スチール") || question.includes("ヒット") || question.includes("ノットロ") || question.includes("ノットリ") || question.includes("サイド") || question.includes("オフザ")) {
+        if (question.includes("タックル") || question.includes("ラック") || question.includes("モール") || question.includes("倒れ") || question.includes("ジャッカル") || question.includes("スチール") || question.includes("ヒット") || question.includes("ノットロ") || question.includes("ノットリ") || question.includes("サイド") || question.includes("オフザ") || question.includes("オーバー")) {
             knowledgeList.push(textBreakdown);
         }
         if (question.includes("スクラム") || question.includes("ラインアウト") || question.includes("タッチ") || question.includes("スローイン") || question.includes("投入") || question.includes("SC") || question.includes("マークオブタッチ")) {

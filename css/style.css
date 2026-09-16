@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body {
   font-family: "Yusei Magic", "Poetsen One", sans-serif;
   margin: 0;
@@ -22,10 +21,43 @@ body {
   left: 0;
   width: 100%;
   z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
-
 .header__title {
   font-size: 40px;
+}
+
+.about-btn {
+  background-color: #fff;
+  color: #4c7b9d;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.about-btn:hover {
+  background-color: #e0e0e0;
+}
+@media screen and (max-width: 767px) {
+  .about-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
 }
 
 .chat-container {
@@ -33,11 +65,15 @@ body {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   overflow-y: auto;
-  padding: 10px;
-  padding-bottom: 140px;
+  padding: 10px 10px 140px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-top: 80px;
+}
+@media screen and (max-width: 767px) {
+  .chat-container {
+    padding-bottom: 220px;
+  }
 }
 
 .chat {
@@ -53,14 +89,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   white-space: pre-wrap;
-  padding: 0 20px;
+  padding: 0 20px 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding-bottom: 25px;
 }
 
 #chatEnd {
-  height: 0; /* 入力欄の高さに合わせて調整 */
+  height: 0;
 }
 
 .message {
@@ -72,7 +107,6 @@ body {
   word-break: break-word;
   overflow-wrap: break-word;
 }
-
 @media screen and (max-width: 767px) {
   .message {
     max-width: 100%;
@@ -93,7 +127,60 @@ body {
   border: 1px solid #ccc;
   color: #333;
 }
+.ai.loading::after, .ai.loading::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin-left: 4px;
+}
+.ai.loading::after {
+  -webkit-animation: dot-pulse 1.4s infinite;
+          animation: dot-pulse 1.4s infinite;
+}
+.ai.loading::before {
+  -webkit-animation: dot-pulse 1.4s infinite 0.2s;
+          animation: dot-pulse 1.4s infinite 0.2s;
+}
 
+.loading-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin: 0 2px;
+  -webkit-animation: dot-pulse 1.4s infinite 0.4s;
+          animation: dot-pulse 1.4s infinite 0.4s;
+}
+
+@-webkit-keyframes dot-pulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes dot-pulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
 .input-area {
   position: fixed;
   bottom: 0;
@@ -110,7 +197,7 @@ body {
   border-top: 1px solid #ccc;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
-          flex: 0 0 auto; /* 高さ固定 */
+          flex: 0 0 auto;
   z-index: 200;
 }
 
@@ -156,103 +243,70 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+#sendBtn:hover {
+  background: rgb(43.5, 134.5, 131.4);
+}
 @media screen and (max-width: 767px) {
   #sendBtn {
     width: 100%;
     margin-top: 10px;
   }
 }
-#sendBtn:hover {
-  background: rgb(43.5283842795, 134.4716157205, 131.3624454148);
-}
-/* AIローディングアニメーション */
-.ai.loading::after {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #999;
-  margin-left: 4px;
-  animation: dot-pulse 1.4s infinite;
-}
 
-.ai.loading::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #999;
-  margin-left: 4px;
-  animation: dot-pulse 1.4s infinite 0.2s;
-}
-
-.loading-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #999;
-  margin: 0 2px;
-  animation: dot-pulse 1.4s infinite 0.4s;
-}
-
-@keyframes dot-pulse {
-  0%, 60%, 100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  30% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* cssの末尾に追加 */
-
-/* ==========================================
-   チャット内の画像レイアウト
-   ========================================== */
-
-/* 画像をまとめるコンテナ */
 .chat-image-container {
   display: grid;
-  gap: 15px; /* 画像と画像の隙間 */
-  margin-top: 15px; /* 上のテキストとの隙間 */
+  gap: 15px;
+  margin-top: 15px;
 }
-
-/* PC画面など、幅が900px以上の時は自動的に2列にする */
 @media screen and (min-width: 769px) {
   .chat-image-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 768px) {
+  .chat-image-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .chat-image-container img {
+    width: 31% !important;
+    height: auto !important;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 31%;
+            flex: 1 1 31%;
+    max-width: 31%;
+    border-radius: 5px;
+    cursor: pointer;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
 
-/* 個別の画像のスタイル（上書き） */
 .chat-image {
-  width: 100%; /* コンテナ（1列分）の幅にピタッと合わせる */
+  width: 100%;
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin-top: 0; /* 隙間はコンテナ側で制御するので0にする */
+  margin-top: 0;
   display: block;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-  background-color: #fff; 
-  object-fit: contain; /* 画像の比率を崩さない */
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
-/* ==========================================
-   会話保存機能のデザイン（サイドバー開閉対応版）
-   ========================================== */
-
-/* ▼ 新規追加：開閉用のボタン ▼ */
 .history-toggle-btn {
   position: fixed;
-  top: 85px; /* ヘッダーのすぐ下 */
+  top: 85px;
   right: 15px;
   z-index: 160;
-  background-color: #4c7b9d; /* ヘッダーと同じ青色 */
+  background-color: #4c7b9d;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -260,78 +314,89 @@ body {
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-
 .history-toggle-btn:hover {
   background-color: #3a5d7c;
 }
 
-/* ▼ 修正：履歴コンテナ（スライドアニメーションを追加） ▼ */
 .history-container {
   position: fixed;
-  top: 135px; /* 開閉ボタンの下に配置 */
+  top: 135px;
   right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 10px;
   z-index: 150;
-  max-height: calc(100vh - 250px); /* 画面下部の入力欄に被らないように高さを自動計算 */
+  max-height: calc(100vh - 250px);
   overflow-y: auto;
   padding-right: 5px;
-  
-  /* --- ここからスライドアニメーションの設定 --- */
-  transform: translateX(120%); /* 初期状態は画面の右外に隠しておく */
+  -webkit-transform: translateX(120%);
+          transform: translateX(120%);
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s ease-in-out; /* 0.3秒かけて滑らかに動かす */
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
-
-/* JavaScriptで「open」クラスが付いた時に画面内にスライドインさせる */
 .history-container.open {
-  transform: translateX(0);
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
   opacity: 1;
   visibility: visible;
 }
-
-/* スクロールバーの見た目を細く綺麗にする（パソコン用） */
 .history-container::-webkit-scrollbar {
   width: 6px;
 }
 .history-container::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 3px;
 }
-
-/* 履歴と×ボタンをまとめる枠 */
-.history-item-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 160px; /* タイトルを表示するための幅 */
+@media screen and (max-width: 767px) {
+  .history-container {
+    max-height: calc(100vh - 340px);
+  }
 }
 
-/* 新規作成（＋）ボタン */
+.history-item-wrapper {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 160px;
+}
+
 .history-new-btn {
   width: 160px;
   height: 40px;
   border-radius: 20px;
-  background-color: #00897b; 
+  background-color: #00897b;
   color: white;
   border: none;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.2s;
   transition: 0.2s;
-  flex-shrink: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .history-new-btn:hover {
   background-color: #00695c;
 }
 
-/* 履歴を呼び出すテキストボタン（タイトル表示用） */
 .history-item-btn {
   width: 100%;
   height: 40px;
@@ -342,19 +407,20 @@ body {
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  padding: 0 30px 0 15px; /* 右側に×ボタン用の余白をあける */
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 0 30px 0 15px;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* 文字が長すぎる場合は「...」にする */
+  text-overflow: ellipsis;
+  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .history-item-btn:hover {
   background-color: #b71c1c;
 }
 
-/* ×（削除）ボタン（枠の中の右側に配置） */
 .delete-history-btn {
   position: absolute;
   right: 5px;
@@ -365,24 +431,29 @@ body {
   cursor: pointer;
   width: 25px;
   height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .delete-history-btn:hover {
-  color: #ffcccc; /* ホバー時に少し赤を薄く */
+  color: #ffcccc;
 }
 
-/* 保存ボタンのラッパー */
 .save-btn-wrapper {
   position: absolute;
-  top: -55px; 
+  top: -55px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   z-index: 150;
 }
 
-/* 保存ボタン本体 */
 .save-btn {
   background-color: #fff;
   color: #d32f2f;
@@ -392,141 +463,202 @@ body {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.2s;
   transition: 0.2s;
   white-space: nowrap;
 }
-
 .save-btn:hover {
   background-color: #d32f2f;
   color: #fff;
 }
 
-/* スマホ表示の時の調整 */
-@media screen and (max-width: 767px) {
-  .chat-container {
-    padding-bottom: 220px; /* チャット画面の底上げを少し増やす */
-  }
-  
-  /* ▼ここを追加：スマホ時は履歴リストの高さを短くして、最後までスクロールできるようにする▼ */
-  .history-container {
-    max-height: calc(100vh - 340px); 
-  }
-}
-
-/* =========================================
-   画像拡大ビューワーの基本スタイル
-========================================= */
 #image-viewer {
-    position: fixed;
-    left: 0;
-    bottom: 0;       /* 追加：常に画面下部に固定 */
-    width: 100%;
-    height: 50vh;    /* 追加：常に画面の縦半分（50%）の高さ */
-    border-top-left-radius: 20px;  /* 追加：上部の角丸 */
-    border-top-right-radius: 20px; /* 追加：上部の角丸 */
-    background-color: #f8f9fa;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease-in-out;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50vh;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #f8f9fa;
+  -webkit-box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  #image-viewer {
+    bottom: 0;
+    height: 50vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 }
 
-/* 隠れている時の状態（画面の下に待機） */
 .image-viewer-hidden {
-    transform: translateY(120%);
+  -webkit-transform: translateY(120%);
+          transform: translateY(120%);
 }
-
-/* 表示されている時の状態 */
 .image-viewer-visible {
-    transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 #viewer-close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: #555;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2001;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #555;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2001;
 }
 
 #viewer-img {
-    max-width: 95%;
-    max-height: 90%;
-    object-fit: contain;
-    transition: opacity 0.2s ease-in-out; /* 半角スペースできれいに修正 */
+  max-width: 95%;
+  max-height: 90%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* =========================================
-   スマホ（画面幅768px以下）専用のレイアウト
-========================================= */
-@media (max-width: 768px) {
-    /* 1. 画像を確実に3列のグリッドにするためのコンテナ設定 */
-    .chat-image-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px; /* 画像同士の隙間 */
-        margin-top: 8px;
-    }
-
-    /* 2. コンテナ内の画像を3列サイズに固定 */
-    .chat-image-container img {
-        width: 31% !important;
-        height: auto !important;
-        flex: 1 1 31%;
-        max-width: 31%;
-        border-radius: 5px;
-        cursor: pointer;
-        object-fit: cover;
-    }
-
-    /* 画像拡大ビューワーを画面下半分に固定 */
-    #image-viewer {
-        bottom: 0;
-        height: 50vh;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-    }
-}
-
-/* =========================================
-   画像切り替えボタン（PC用ナビゲーション）
-========================================= */
 .viewer-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒背景 */
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 2002;
-    display: none; /* デフォルトは非表示。JSで枚数に応じて表示する */
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2002;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
-
 .viewer-nav-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* ボタンの位置 */
-#viewer-prev-btn { left: 5%; }
-#viewer-next-btn { right: 5%; }
+#viewer-prev-btn {
+  left: 5%;
+}
+
+#viewer-next-btn {
+  right: 5%;
+}
+
+.about-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.about-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.about-modal__content {
+  background-color: #fff;
+  width: 90%;
+  max-width: 500px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  position: relative;
+  -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.about-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #555;
+  cursor: pointer;
+}
+.about-modal__close:hover {
+  color: #000;
+}
+.about-modal__title {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  color: #4c7b9d;
+  text-align: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+.about-modal__text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.about-modal__text p {
+  margin-bottom: 15px;
+}
+.about-modal__text p:last-child {
+  margin-bottom: 0;
+}
+.about-modal__text strong {
+  color: #d32f2f;
+  display: inline-block;
+  margin-bottom: 5px;
+}
