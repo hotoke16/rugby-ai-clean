@@ -162,7 +162,7 @@ ${combinedKnowledge}
         for (let i = 0; i < retryCount; i++) {
             try {
                 response = await ai.models.generateContent({
-                    model: 'gemini-3.5-flash', 
+                    model: 'gemini-3.5-flash-lite', 
                     contents: question,
                     config: {
                         systemInstruction: finalSystemPrompt,
@@ -202,22 +202,24 @@ ${combinedKnowledge}
         answer = answer.replace("[IMG:tackle-box-all]", "[IMG:tackle-box (1).jpg][IMG:tackle-box (2).jpg][IMG:tackle-box (3).jpg][IMG:tackle-box (4).jpg]");
 
         // 画像の重複削除 (すでに同じタグがある場合は消去)
-        const uniqueImages = [];
-        answer = answer.replace(/\[IMG:[^\]]+\]/g, (match) => {
-            if (uniqueImages.includes(match)) {
-                return ""; 
-            } else {
-                uniqueImages.push(match);
-                return match; 
-            }
-        });
+        const logUserId = userId || `Guest_${Date.now()}`;
+        
+        fetch(GAS_URL, {
+            method: "POST",
+            body: JSON.stringify({ 
+                action: "save", 
+                userId: logUserId, 
+                month: currentMonth, 
+                user: question, 
+                ai: answer 
+            })
+        }).catch(err => console.error("GAS Save Error:", err));
 
-        // 制限回数などは無効化しているので、remaining等は返さずシンプルに回答だけを返す
         res.json({ answer: answer });
 
     } catch (error) {
-        console.error("Gemini API Error:", error);
-        res.status(500).json({ error: "AIの処理中にエラーが発生しました。" });
+        console.error("Gemini API Error (3回リトライ失敗):", error);
+        res.status(500).json({ error: "AIが一時的に混み合っているか、エラーが発生しました。もう一度送信してください。" });
     }
 });
 
