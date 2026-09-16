@@ -183,22 +183,39 @@ ${combinedKnowledge}
         let answer = response.text;
 
         answer = answer.replace("[IMG:position-all]", "[IMG:players.jpg][IMG:forward.jpg][IMG:backs.jpg]");
+
         answer = answer.replace("[IMG:kick-all]", "[IMG:kick-01.jpg][IMG:kick-02.jpg]");
+
         answer = answer.replace("[IMG:setplay-all]", "[IMG:setplay-01.jpg][IMG:setplay-02.jpg][IMG:setplay-03.jpg]");
+
         answer = answer.replace("[IMG:penalty-option-all]", "[IMG:penaltykick-option (1).jpg][IMG:penaltykick-option (2).jpg][IMG:penaltykick-option (3).jpg][IMG:penaltykick-option (4).jpg]");
+
         answer = answer.replace("[IMG:kick-area-all]", "[IMG:22m in.jpg][IMG:22m out (1).jpg][IMG:22m out (2).jpg][IMG:50 22.jpg]");
+        // アドバンテージを体系的に説明する話題
         answer = answer.replace("[IMG:advantage-all]", "[IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg][IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg][IMG:advantage (7).jpg][IMG:advantage (8).jpg]");
+        // ノックフォワードアドバンテージの説明
         answer = answer.replace("[IMG:advantage-knock-all]", "[IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg]");
+        // ペナルティアドバンテージの説明
         answer = answer.replace("[IMG:advantage-penalty-all]", "[IMG:advantage (7).jpg][IMG:advantage (8).jpg]");
+
         answer = answer.replace("[IMG:kick off-all]", "[IMG:kick off (1).jpg][IMG:kick off (2).jpg][IMG:kick off (3).jpg]");
+
         answer = answer.replace("[IMG:mark-all]", "[IMG:mark (1).jpg][IMG:mark (2).jpg][IMG:mark (3).jpg][IMG:mark (4).jpg]");
+
         answer = answer.replace("[IMG:not roll-away-all]", "[IMG:not roll-away (1).jpg][IMG:not roll-away (2).jpg][IMG:not roll-away (3).jpg][IMG:not roll-away (4).jpg]");
+
         answer = answer.replace("[IMG:ruck-offside-all]", "[IMG:ruck-offside (1).jpg][IMG:ruck-offside (2).jpg][IMG:ruck-offside (3).jpg]");
+
         answer = answer.replace("[IMG:high-tackle-all]", "[IMG:high-tackle (1).jpg][IMG:high-tackle (2).jpg][IMG:high-tackle (3).jpg]");
+
         answer = answer.replace("[IMG:22mline dropout-all]", "[IMG:dead-kick (2).jpg][IMG:goal-dead (1).jpg][IMG:goal-dead (2).jpg][IMG:goal-dead (3).jpg]");
+
         answer = answer.replace("[IMG:tri-line dropout-all]", "[IMG:knock-forward in the try area.jpg][IMG:held up.jpg][IMG:touchdown (1).jpg][IMG:touchdown (2).jpg][IMG:defensive dead (1).jpg][IMG:defensive dead (2).jpg][IMG:ball-dead (1).jpg][IMG:ball-dead (2).jpg]");
+
         answer = answer.replace("[IMG:signal-basic]", "[IMG:signal (1).jpg][IMG:signal (2).jpg][IMG:signal (3).jpg][IMG:signal (4).jpg]");
+
         answer = answer.replace("[IMG:signal-common Fouls]", "[IMG:signal (5).jpg][IMG:signal (6).jpg][IMG:signal (7).jpg][IMG:signal (8).jpg]");
+
         answer = answer.replace("[IMG:tackle-box-all]", "[IMG:tackle-box (1).jpg][IMG:tackle-box (2).jpg][IMG:tackle-box (3).jpg][IMG:tackle-box (4).jpg]");
 
         // 画像の重複削除 (すでに同じタグがある場合は消去)
