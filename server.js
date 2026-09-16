@@ -191,8 +191,10 @@ ${combinedKnowledge}
         answer = answer.replace("[IMG:penalty-option-all]", "[IMG:penaltykick-option (1).jpg][IMG:penaltykick-option (2).jpg][IMG:penaltykick-option (3).jpg][IMG:penaltykick-option (4).jpg]");
 
         answer = answer.replace("[IMG:kick-area-all]", "[IMG:22m in.jpg][IMG:22m out (1).jpg][IMG:22m out (2).jpg][IMG:50 22.jpg]");
-        // アドバンテージを体系的に説明する話題
+        // アドバンテージの詳細を説明する話題
         answer = answer.replace("[IMG:advantage-all]", "[IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg][IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg][IMG:advantage (7).jpg][IMG:advantage (8).jpg]");
+        // アドバンテージの基礎を説明する話題
+        answer = answer.replace("[IMG:advantage-basic-all]", "[IMG:advantage (1).jpg][IMG:advantage (2).jpg][IMG:advantage (3).jpg]");
         // ノックフォワードアドバンテージの説明
         answer = answer.replace("[IMG:advantage-knock-all]", "[IMG:advantage (4).jpg][IMG:advantage (5).jpg][IMG:advantage (6).jpg]");
         // ペナルティアドバンテージの説明
