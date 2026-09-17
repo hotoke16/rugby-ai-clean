@@ -71,7 +71,7 @@ const baseSystemPrompt = `あなたはラグビー解説AIです。
 〇競技規則に基づいて作成された実践的な解説・判断
 
 【回答フォーマット】
-回答は必ず以下の構成にすること。これ以外の構成は一切認めない。最初に必ず画像タグを1つ（または [IMG:NONE] ）出力し、改行してから解説文を書くこと。
+回答は必ず以下の構成にすること。これ以外の構成は一切認めない。最初に必ず関連する画像タグを（または [IMG:NONE] ）出力し、改行してから解説文を書くこと。
 
 [IMG:該当する画像タグ、またはNONE]
 （ここに300文字程度の解説文を書く）
@@ -180,8 +180,8 @@ ${combinedKnowledge}
 
                 // ★ あなたのアイデア：JSによる確実性チェック
                 // 回答の中に「[IMG:」という文字が含まれていない場合、AIの出力忘れとみなす
-                if (!answer.includes("[IMG:")) {
-                    throw new Error("AIが画像タグ(またはNONEタグ)の出力を忘れました"); // 意図的にエラーを発生させてリトライへ飛ばす
+                if (!answer.includes("[IMG:") || answer.includes("[IMG:NONE]")) {
+                    throw new Error("タグの出力忘れ、または [IMG:NONE] を検知したためリトライします"); // 意図的にエラーを発生させてリトライへ飛ばす
                 }
 
                 // 無事にタグが含まれていたらループを抜ける
@@ -198,6 +198,8 @@ ${combinedKnowledge}
                 }
             }
         }
+
+        answer = answer.replace(/\[IMG:NONE\]/g, "").trim();
 
         // ラグビーは15人、フォワード8人、バックス7人と説明する話題
         answer = answer.replace("[IMG:position-all]", "[IMG:players.jpg][IMG:forward.jpg][IMG:backs.jpg]");
