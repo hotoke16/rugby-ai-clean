@@ -199,7 +199,7 @@ ${combinedKnowledge}
             }
         }
 
-
+        // ラグビーは15人、フォワード8人、バックス7人と説明する話題
         answer = answer.replace("[IMG:position-all]", "[IMG:players.jpg][IMG:forward.jpg][IMG:backs.jpg]");
 
         answer = answer.replace("[IMG:kick-all]", "[IMG:kick-01.jpg][IMG:kick-02.jpg]");
@@ -237,6 +237,8 @@ ${combinedKnowledge}
         answer = answer.replace("[IMG:signal-common Fouls]", "[IMG:signal (5).jpg][IMG:signal (6).jpg][IMG:signal (7).jpg][IMG:signal (8).jpg]");
 
         answer = answer.replace("[IMG:tackle-box-all]", "[IMG:tackle-box (1).jpg][IMG:tackle-box (2).jpg][IMG:tackle-box (3).jpg][IMG:tackle-box (4).jpg]");
+        // よくある反則
+        answer = answer.replace("[IMG:common fouls-all]", "[IMG:knock-forward-01.jpg][IMG:throw-forward-01.jpg][IMG:steal (2).jpg][IMG:ruck-offside (2).jpg]");
 
 
 

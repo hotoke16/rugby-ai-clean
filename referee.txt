@@ -31,10 +31,12 @@
 　*レフリーの立ち位置は、状況に応じて使い分ける必要がある。
 
 【トリガー】 -> 【出力タグ】
+よくある基本的なシグナル								-> [IMG:signal-basic]
 トライシグナル													-> [IMG:signal (1).jpg]
 ペナルティキックシグナル 								-> [IMG:signal (2).jpg]
 フリーキックシグナル 										-> [IMG:signal (3).jpg]
 アドバンテージシグナル 									-> [IMG:signal (4).jpg]
+よくある反則のシグナル									-> [IMG:signal-common Fouls]
 ノックフォワード（ノックオン）シグナル 	-> [IMG:signal (5).jpg]
 スローフォワードシグナル 								-> [IMG:signal (6).jpg]
 ノットリリースザボールシグナル 					-> [IMG:signal (7).jpg]
