@@ -211,7 +211,7 @@ ${combinedKnowledge}
         answer = answer.replace("[IMG:high-tackle-all]", "[IMG:high-tackle (1).jpg][IMG:high-tackle (2).jpg][IMG:high-tackle (3).jpg]");
 
         answer = answer.replace("[IMG:22mline dropout-all]", "[IMG:dead-kick (2).jpg][IMG:goal-dead (1).jpg][IMG:goal-dead (2).jpg][IMG:goal-dead (3).jpg]");
-
+        // トライラインドロップアウトになるパターン（ノックフォワード・ヘルドアップ・タッチダウン・DFのデッド・ボールデッド）
         answer = answer.replace("[IMG:tri-line dropout-all]", "[IMG:knock-forward in the try area.jpg][IMG:held up.jpg][IMG:touchdown (1).jpg][IMG:touchdown (2).jpg][IMG:defensive dead (1).jpg][IMG:defensive dead (2).jpg][IMG:ball-dead (1).jpg][IMG:ball-dead (2).jpg]");
 
         answer = answer.replace("[IMG:signal-basic]", "[IMG:signal (1).jpg][IMG:signal (2).jpg][IMG:signal (3).jpg][IMG:signal (4).jpg]");
@@ -219,6 +219,8 @@ ${combinedKnowledge}
         answer = answer.replace("[IMG:signal-common Fouls]", "[IMG:signal (5).jpg][IMG:signal (6).jpg][IMG:signal (7).jpg][IMG:signal (8).jpg]");
 
         answer = answer.replace("[IMG:tackle-box-all]", "[IMG:tackle-box (1).jpg][IMG:tackle-box (2).jpg][IMG:tackle-box (3).jpg][IMG:tackle-box (4).jpg]");
+
+
 
         // 画像の重複削除 (すでに同じタグがある場合は消去)
         const logUserId = userId || `Guest_${Date.now()}`;
