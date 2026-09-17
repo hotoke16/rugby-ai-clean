@@ -164,6 +164,7 @@ ${combinedKnowledge}
 
         // --- 3. Gemini API 呼び出し ---
         let response;
+        let answer = "";
         let retryCount = 3; // 最大3回まで粘る
         
         for (let i = 0; i < retryCount; i++) {
@@ -175,19 +176,29 @@ ${combinedKnowledge}
                         systemInstruction: finalSystemPrompt,
                     }
                 });
-                break; // 成功したらループ（再挑戦）を終わる
+                answer = response.text;
+
+                // ★ あなたのアイデア：JSによる確実性チェック
+                // 回答の中に「[IMG:」という文字が含まれていない場合、AIの出力忘れとみなす
+                if (!answer.includes("[IMG:")) {
+                    throw new Error("AIが画像タグ(またはNONEタグ)の出力を忘れました"); // 意図的にエラーを発生させてリトライへ飛ばす
+                }
+
+                // 無事にタグが含まれていたらループを抜ける
+                break; 
+
             } catch (apiError) {
-                // もし503（混雑エラー）だったら、2秒待ってから再挑戦する
-                if (apiError.status === 503 && i < retryCount - 1) {
-                    console.log(`Gemini API混雑中(503)。2秒後にリトライします...（残り${retryCount - i - 1}回）`);
+                if (i < retryCount - 1) {
+                    console.log(`[リトライ ${i + 1}/${retryCount}] エラー発生: ${apiError.message}。2秒後に再挑戦します...`);
                     await new Promise(resolve => setTimeout(resolve, 2000));
                 } else {
-                    throw apiError; // それ以外の致命的なエラーなら外に投げて終了
+                    // 3回粘ってもダメだった場合の最終手段（エラーにはせず、回答だけは返す）
+                    console.log("3回リトライしましたが、AIがタグを出力しませんでした。");
+                    if (!answer) throw apiError; // 完全な通信エラーの場合は外に投げる
                 }
             }
         }
 
-        let answer = response.text;
 
         answer = answer.replace("[IMG:position-all]", "[IMG:players.jpg][IMG:forward.jpg][IMG:backs.jpg]");
 
