@@ -34,6 +34,7 @@ const textSetplay = fs.readFileSync(path.join(__dirname, "setplay.txt"), "utf-8"
 const textFoul = fs.readFileSync(path.join(__dirname, "foul.txt"), "utf-8");
 const textKick = fs.readFileSync(path.join(__dirname, "kick.txt"), "utf-8");
 const textReferee = fs.readFileSync(path.join(__dirname, "referee.txt"), "utf-8");
+const textGround = fs.readFileSync(path.join(__dirname, "ground.txt"), "utf-8");
 
 // ==========================================
 // 2. 共通のシステムプロンプト設定
@@ -150,6 +151,9 @@ app.post("/ask", async (req, res) => {
         }
         if (question.includes("レフリ") || question.includes("審判") || question.includes("シグナル") || question.includes("ジェスチャー")) {
             knowledgeList.push(textReferee);
+        }
+        if (question.includes("グラ") || question.includes("フィ") || question.includes("競技") ||question.includes("H") ||question.includes("イン") ||question.includes("22m") ||question.includes("周辺") ||question.includes("スクラム") ||question.includes("ポスト")) {
+            knowledgeList.push(textGround);
         }
 
         if (knowledgeList.length === 0) {

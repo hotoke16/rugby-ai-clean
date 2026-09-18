@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ラグビーAI FREE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="./css/style.css">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
+<link rel="manifest" href="assets/site.webmanifest">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Yusei+Magic&display=swap" rel="stylesheet">
+</head>
+
+<!-- ↓ここから追加（</body>の直前）↓ -->
+<div id="image-viewer" class="image-viewer-hidden">
+    <button id="viewer-close-btn">×</button>
+    
+    <!-- ★ここから2行を追加（PC用の左右ボタン） -->
+    <button id="viewer-prev-btn" class="viewer-nav-btn">◀</button>
+    <button id="viewer-next-btn" class="viewer-nav-btn">▶</button>
+    <!-- ★ここまで -->
+
+    <img id="viewer-img" src="" alt="拡大画像">
+</div>
+<!-- ↑ここまで↑ -->
+
+<body>
+  <header class="header">
+    <button id="about-btn" class="about-btn">本AIについて</button>
+    <div class="header__title">ラグビーAI </div>
+  </header>
+
+  <main class="chat-container">
+    <button id="history-toggle-btn" class="history-toggle-btn">≡ 履歴</button>
+    <div id="history-container" class="history-container"></div>
+    
+    <div id="chat" class="chat"></div>
+    <div id="chatEnd"></div>
+    
+    <!-- ↓ここから追加（</body>の直前）↓ -->
+    <div id="image-viewer" class="image-viewer-hidden">
+      <button id="viewer-close-btn">×</button>
+      <img id="viewer-img" src="" alt="拡大画像">
+    </div>
+    <!-- ↑ここまで↑ -->
+    
+  </main>
+
+  <footer class="input-area">
+    <div class="save-btn-wrapper">
+      <button id="save-btn" class="save-btn">保存</button>
+    </div>
+    
+    <div class="input-box">
+      <textarea id="question" placeholder="ラグビーのルールに関する質問はなんですか？" rows="2"></textarea>
+      <button id="sendBtn">送信</button>
+    </div>
+  </footer>
+
+  <div id="about-modal" class="about-modal">
+    <div class="about-modal__content">
+      <button id="about-close-btn" class="about-modal__close">×</button>
+      <h2 class="about-modal__title">本AIについて</h2>
+      <div class="about-modal__text">
+        <p><strong>① 会話が苦手です</strong><br>
+        「ラグビーの人数は？」→「15人です（FW8人、BK7人）」と答えた後、「7人は？」と聞くと、「7人制ラグビーという競技もあります」と、前の会話を忘れます。毎回主語を入れた1問1答の形式で聞くと正確に答えます。</p>
+
+        <p><strong>② 誤字脱字や「ひらがな」に弱いです</strong><br>
+        「のっくおん」など本来カタカナの用語をひらがなで入力したり、タイプミスがあると、処理できないことがあります。</p>
+
+        <p><strong>③ 返答スピードにムラがあります（3秒〜90秒）</strong><br>
+        一瞬で図解を出してくる時もあれば90秒ほど沈黙する時もあります。ラグビーに詳しい友達とLINEしている感覚で待ってください。</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script-free.js"></script>
+</body>
+</html>
