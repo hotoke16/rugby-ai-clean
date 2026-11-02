@@ -2,7 +2,7 @@
 // アクセストークン認証システム
 // ==========================================
 // 1. 今月のアクセストークン（毎月ここを書き換えます）
-const currentToken = "rugby8";
+const currentToken = "rugby-november";
 
 // 2. URLから「?token=〇〇」の部分を取得
 const params = new URLSearchParams(window.location.search);
